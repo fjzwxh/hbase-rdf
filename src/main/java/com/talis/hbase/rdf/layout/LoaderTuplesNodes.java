@@ -52,7 +52,7 @@ public class LoaderTuplesNodes extends StoreInformationHolder implements StoreLo
 	TupleLoader currentLoader ;
 
 	int count ;
-	int chunkSize = 100000 ;
+	int chunkSize = 500000 ;
 	
  	private Class<? extends TupleLoader> tupleLoaderClass ;
 
@@ -224,7 +224,7 @@ public class LoaderTuplesNodes extends StoreInformationHolder implements StoreLo
 	 // Queue up a triple, committing if we have enough chunks
 	 private void updateOneTuple( TupleChange tuple )
 	 {
-		 if( totalTriples % 1000000 == 0 ) LOG.info( "Triples added:: " + totalTriples ) ;
+		 if( totalTriples % chunkSize == 0 ) LOG.info( "Triples added:: " + totalTriples ) ;
 		 if( currentLoader == null || !Arrays.equals( currentLoader.getTableDesc().getTables(), tuple.table.getTables() ) ) 
 		 {
 			 commitTuples() ; // mode is changing, so commit

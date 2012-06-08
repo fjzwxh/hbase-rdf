@@ -114,7 +114,7 @@ public abstract class TupleLoaderBase extends com.talis.hbase.rdf.store.TupleLoa
 		if( tupleNum == 0 ) return ;		
 		try 
 		{
-			if( tupleNum % 100000 == 0 ) LOG.info( "Store flush::Checking triples added::" + tupleNum ) ;
+			if( tupleNum % chunkSize == 0 ) LOG.info( "Store flush::Checking triples added::" + tupleNum ) ;
 			if( amLoading && tupleNum >= chunkSize )
 			{
 				LOG.info( "Store flush::Reached chunk limit" ) ;

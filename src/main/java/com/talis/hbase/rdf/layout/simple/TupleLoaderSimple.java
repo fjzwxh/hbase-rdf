@@ -64,6 +64,7 @@ public class TupleLoaderSimple extends TupleLoaderBase
 	
 	public void loadTuple( Node... row ) throws Exception
 	{
+		totalTriples++ ;
 		String prefix = getPrefix( row ) ;
 		int start = ( row.length == 3 ) ? 0 : 1 ;
 		
